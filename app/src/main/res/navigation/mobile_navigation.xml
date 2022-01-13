@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/dashboardFragment">
+    <fragment
+            android:id="@+id/inventoryFragment"
+        android:name="com.example.shiftr.view.inventory.InventoryFragment"
+        android:label="@string/inventory"
+        tools:layout="@layout/inventory_fragment" />
+    <fragment
+        android:id="@+id/toDoListFragment"
+        android:name="com.example.shiftr.view.todo.ToDoListFragment"
+        android:label="@string/to_do_list"
+        tools:layout="@layout/to_do_list_fragment" >
+        <action
+            android:id="@+id/action_toDoListFragment_to_viewTodoFragment"
+            app:destination="@id/viewTodoFragment"
+            app:enterAnim="@android:anim/fade_in" />
+    </fragment>
+    <fragment
+        android:id="@+id/viewTodoFragment"
+        android:name="com.example.shiftr.view.todo.ViewTodoFragment"
+        android:label="ViewTodoFragment" >
+        <argument
+            android:name="todo"
+            app:argType="com.example.shiftr.data.Todo" />
+        <action
+            android:id="@+id/action_viewTodoFragment_to_toDoListFragment"
+            app:destination="@id/toDoListFragment"
+            app:popUpTo="@id/toDoListFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/dashboardFragment"
+        android:name="com.example.shiftr.view.DashboardFragment"
+        android:label="DashboardFragment"
+        tools:layout="@layout/dashboard_fragment"/>
+</navigation>
